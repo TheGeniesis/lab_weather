@@ -1,0 +1,13 @@
+version: '2'
+services:
+  node:
+    image: node:10.16
+    working_dir: /app
+    volumes:
+      - ./:/app
+    networks:
+      - host
+
+networks:
+  host:
+    external: true
