@@ -24,7 +24,7 @@ final class Version20200126075549 extends AbstractMigration
 
         $this->addSql('CREATE SEQUENCE example_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE second_example_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE example (id INT NOT NULL, foo VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE example (id INT NOT NULL, temp INT NOT NULL, humility INT NOT NULL, rainfall INT NOT NULL, wind_direction VARCHAR (2) NOT NULL,  PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE second_example (id INT NOT NULL, eg VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
     }
 

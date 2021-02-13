@@ -14,10 +14,13 @@
         "symfony/framework-bundle": "4.4.*",
         "symfony/monolog-bundle": "^3.5",
         "symfony/orm-pack": "^1.0",
+        "symfony/property-access": "4.4.*",
+        "symfony/serializer": "4.4.*",
         "symfony/yaml": "4.4.*",
         "tweedegolf/prometheus-bundle": "^0.3.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4"
     },
     "config": {
         "preferred-install": {

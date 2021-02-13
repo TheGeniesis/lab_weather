@@ -6,8 +6,14 @@ use App\Entity\Example;
 use App\Repository\ExampleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class ExampleController extends AbstractController
 {
@@ -16,11 +22,15 @@ class ExampleController extends AbstractController
      */
     public function getExample(ExampleRepository $exampleRepository): Response
     {
-        for ($i = 0; $i < rand(1, 3); $i++) {
-            $exampleRepository->findAll();
-        }
+            $result = $exampleRepository->findAll();
 
-        return new Response('', Response::HTTP_OK);
+        $normalizers = [new ObjectNormalizer()];
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($result, 'json');
+
+        return new Response($jsonContent, Response::HTTP_OK);
     }
 
     /**
@@ -30,7 +40,10 @@ class ExampleController extends AbstractController
     {
         for ($i = 0; $i < rand(1, 3); $i++) {
             $example = new Example();
-            $example->setFoo('some data');
+            $example->setHumility(30);
+            $example->setTemp(30);
+            $example->setRainfall(1000);
+            $example->setWindDirection("NE");
             $entityManager->persist($example);
         }
         $entityManager->flush();

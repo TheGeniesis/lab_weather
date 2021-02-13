@@ -86,3 +86,4 @@ tasks:
       - docker-compose run --rm php-fpm bin/console doctrine:database:create
       - docker-compose run --rm php-fpm php bin/console doctrine:m:m --no-interaction
       - docker-compose run --rm php-fpm bin/console doctrine:schema:update --force
+      - docker-compose run --rm php-fpm bin/console doctrine:fixtures:load
