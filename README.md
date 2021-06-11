@@ -11,7 +11,7 @@ Endpoints:
 
 | Method | Routing         | Description                |
 |--------|-----------------|----------------------------|
-| POST   | /example        | Send weather data          |
+| POST   | /data           | Send weather data          |
 
 ## Pre-requirements
 
