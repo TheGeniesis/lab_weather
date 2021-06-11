@@ -1,27 +1,15 @@
 scenarios:
   - name: "Generate traffic"
     flow:
-      - log: "Ask for example data"
-      - get:
-          url: "{{example}}"
-      - log: "Add some example data"
       - post:
-          url: "{{example}}"
-      - log: "Ask for second example data"
-      - get:
-          url: "{{second_example}}"
-      - log: "Add some second example data"
-      - post:
-          url: "{{second_example}}"
-      - log: "Ask for slow example data"
-      - get:
-          url: "{{slow_example}}"
-      - log: "Add some slow example data"
-      - post:
-          url: "{{slow_example}}"
-      - log: "Edit some slow example data"
-      - put:
-          url: "{{slow_example}}"
-      - log: "Delete some slow example data"
-      - delete:
-          url: "{{slow_example}}"
+          url: "{{dataEndpoint}}"
+          beforeRequest: "getDeviceName"
+          # afterResponse: "printStatus"
+          json: 
+            temperature: "{{$randomNumber(0,50)}}"
+            humility: "{{$randomNumber(0,100)}}"
+            rain_fall: "{{$randomNumber(0,10000)}}"
+            wind_speed: "{{$randomNumber(0,150)}}"
+            wind_direction: "{{$randomNumber(0,360)}}"
+            device_name: "{{ deviceName }}"
+      - log: "Send data"

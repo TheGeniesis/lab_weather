@@ -30,21 +30,6 @@ class ControllerActionMetricController extends AbstractController
      */
     public function getLogAction(): Response
     {
-        $histogram = $this->collectorRegistry->getHistogram(LogMetricNameEnum::APP_WEATHER_TEMPERATURE);
-        $histogram->observe(mt_rand(0, 30), $this->getLabels());
-
-        $histogram = $this->collectorRegistry->getHistogram(LogMetricNameEnum::APP_WEATHER_HUMILITY);
-        $histogram->observe(mt_rand(0, 100), $this->getLabels());
-
-        $histogram = $this->collectorRegistry->getHistogram(LogMetricNameEnum::APP_WEATHER_RAIN_FALL);
-        $histogram->observe(mt_rand(0, 1000), $this->getLabels());
-
-        $histogram = $this->collectorRegistry->getHistogram(LogMetricNameEnum::APP_WEATHER_WIND_SPEED);
-        $histogram->observe(mt_rand(0, 150), $this->getLabels());
-
-        $histogram = $this->collectorRegistry->getHistogram(LogMetricNameEnum::APP_WEATHER_WIND_DIRECTION);
-        $histogram->observe(mt_rand(0, 360), $this->getLabels());
-
         $formatter = new TextFormatter();
 
         $data = $formatter->format($this->collectorRegistry->collect());
@@ -57,13 +42,5 @@ class ControllerActionMetricController extends AbstractController
             Response::HTTP_OK, [
             'Content-Type' => $formatter->getMimeType(),
         ]);
-    }
-
-    private function getLabels(): array
-    {
-        return [
-            "labs",
-            "weather",
-        ];
     }
 }

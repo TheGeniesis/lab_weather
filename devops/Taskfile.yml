@@ -1,6 +1,7 @@
-version: '2'
+version: 3
 env:
   HELMFILE_HELM3: 1
+
 vars:
   K8S_IMAGE: kindest/node:v1.17.0
   K8S_NAME: kind

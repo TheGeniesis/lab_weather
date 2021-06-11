@@ -1,9 +1,5 @@
 config:
     target: "http://localhost"
     variables:
-      example:
-      - "/example"
-      second_example:
-      - "/second/example"
-      slow_example:
-      - "/slow/example"
+      dataEndpoint:
+      - "/data"

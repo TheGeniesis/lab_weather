@@ -39,14 +39,6 @@ services:
                   - '%metric_redis_prefix%'
                   - false
 
-    App\EventSubscriber\LogControllerActionSubscriber:
-        class: App\EventSubscriber\LogControllerActionSubscriber
-        arguments:
-            $envForPrometheus: '%metric_redis_prefix%'
-            $isSubscriberEnabled: '%controller_metrics_enabled%'
-        tags:
-            - { name: kernel.event_subscriber }
-
     App\Controller\ControllerActionMetricController:
         $redisStorage: '@app.storage.redis.prometheus'
 
