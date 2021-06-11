@@ -17,7 +17,7 @@ case "$1" in
     if [ "$APP_UPDATE_DATABASE" == "on" ]
     then
       php bin/console doctrine:database:create --if-not-exists
-      php bin/console doctrine:m:m --no-interaction
+      # php bin/console doctrine:m:m --no-interaction
     fi
     php-fpm --nodaemonize
   ;;

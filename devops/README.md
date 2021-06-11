@@ -48,11 +48,9 @@ task port-forward-grafana
 # credentials admin/12tsh3
 ```
 
-
 ### Prometheus Dashboards
 
 ```bash
 task port-forward-prometheus
 # Open in browser http://localhost:9090
 ```
-

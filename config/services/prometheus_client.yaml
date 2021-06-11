@@ -18,64 +18,6 @@ services:
   #               #
   #################
 
-  tweede_golf.prometheus_client.collector.app_request_called_quantity_total:
-    class: TweedeGolf\PrometheusClient\Collector\Counter
-    factory: TweedeGolf\PrometheusClient\CollectorRegistry:createCounter
-    arguments:
-      - 'app_request_called_quantity_total'
-      - ['router', 'env', 'application']
-      - 'Quantity of called requests'
-    tags: [tweede_golf_prometheus.collector]
-
-  tweede_golf.prometheus_client.collector.app_sub_request_called_quantity_total:
-    class: TweedeGolf\PrometheusClient\Collector\Counter
-    factory: TweedeGolf\PrometheusClient\CollectorRegistry:createCounter
-    arguments:
-      - 'app_sub_request_called_quantity_total'
-      - ['router', 'env', 'application']
-      - 'Quantity of called sub requests'
-    tags: [tweede_golf_prometheus.collector]
-
-  tweede_golf.prometheus_client.collector.app_request_execution_time_seconds:
-    class: TweedeGolf\PrometheusClient\Collector\Histogram
-    factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
-    arguments:
-      - 'app_request_execution_time_seconds'
-      - ['router', 'env', 'application']
-      - []
-      - 'Request duration'
-    tags: [tweede_golf_prometheus.collector]
-
-  tweede_golf.prometheus_client.collector.app_request_db_query_execution_time_seconds:
-    class: TweedeGolf\PrometheusClient\Collector\Histogram
-    factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
-    arguments:
-      - 'app_request_db_query_execution_time_seconds'
-      - ['router', 'env', 'application']
-      - []
-      - 'Database queries duration'
-    tags: [tweede_golf_prometheus.collector]
-
-  tweede_golf.prometheus_client.collector.app_request_db_query_quantity:
-    class: TweedeGolf\PrometheusClient\Collector\Histogram
-    factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
-    arguments:
-      - 'app_request_db_query_quantity'
-      - ['router', 'env', 'application']
-      - []
-      - 'Quantity of database requests'
-    tags: [tweede_golf_prometheus.collector]
-
-  tweede_golf.prometheus_client.collector.app_request_db_query_type:
-    class: TweedeGolf\PrometheusClient\Collector\Histogram
-    factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
-    arguments:
-      - 'app_request_db_query_type'
-      - ['router', 'env', 'application', 'type', 'table_name']
-      - []
-      - 'Quantity of database query types'
-    tags: [tweede_golf_prometheus.collector]
-
   #########################
   #                       #
   #  Weather tag section  #
@@ -87,7 +29,7 @@ services:
     factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
     arguments:
       - 'app_weather_temperature'
-      - ['env', 'weather']
+      - ['env', 'weather', 'device_name']
       - 'Temperature'
     tags: [tweede_golf_prometheus.collector]
 
@@ -96,7 +38,7 @@ services:
     factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
     arguments:
       - 'app_weather_humility'
-      - ['env', 'weather']
+      - ['env', 'weather', 'device_name']
       - 'Humility'
     tags: [tweede_golf_prometheus.collector]
 
@@ -105,7 +47,7 @@ services:
     factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
     arguments:
       - 'app_weather_rain_fall'
-      - ['env', 'weather']
+      - ['env', 'weather', 'device_name']
       - 'Rain fall'
     tags: [tweede_golf_prometheus.collector]
 
@@ -114,7 +56,7 @@ services:
     factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
     arguments:
       - 'app_weather_wind_speed'
-      - ['env', 'weather']
+      - ['env', 'weather', 'device_name']
       - 'Wind speed'
     tags: [tweede_golf_prometheus.collector]
 
@@ -123,6 +65,6 @@ services:
     factory: TweedeGolf\PrometheusClient\CollectorRegistry:createHistogram
     arguments:
       - 'app_weather_wind_direction'
-      - ['env', 'weather']
+      - ['env', 'weather', 'device_name']
       - 'Wind direction'
     tags: [tweede_golf_prometheus.collector]
